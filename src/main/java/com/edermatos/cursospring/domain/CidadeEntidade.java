@@ -11,6 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString(doNotUseGetters = true)
 public class CidadeEntidade implements Serializable {
 
     @Id

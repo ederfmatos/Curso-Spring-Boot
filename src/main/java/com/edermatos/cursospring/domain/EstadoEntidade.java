@@ -1,10 +1,7 @@
 package com.edermatos.cursospring.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +13,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
+@ToString(doNotUseGetters = true)
 public class EstadoEntidade implements Serializable {
 
     @Id

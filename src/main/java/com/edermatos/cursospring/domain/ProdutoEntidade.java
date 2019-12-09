@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
+@ToString(doNotUseGetters = true)
 public class ProdutoEntidade {
 
     @Id
