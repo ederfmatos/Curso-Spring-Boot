@@ -1,5 +1,6 @@
 package com.edermatos.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,12 +19,13 @@ public class ProdutoEntidade {
     @Column
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
     @Column
     private double preco;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "PRODUTO_CATEGORIA",

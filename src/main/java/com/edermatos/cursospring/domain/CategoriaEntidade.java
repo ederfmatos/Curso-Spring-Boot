@@ -1,7 +1,6 @@
 package com.edermatos.cursospring.domain;
 
 import lombok.*;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +20,7 @@ public class CategoriaEntidade implements Serializable {
     @Column
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
     @ManyToMany(mappedBy = "categorias")

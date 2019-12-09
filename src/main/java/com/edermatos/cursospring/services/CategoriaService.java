@@ -34,6 +34,7 @@ public class CategoriaService implements CrudService<CategoriaEntidade> {
 
     @Override
     public CategoriaEntidade update(int id, CategoriaEntidade input) {
+        input.setId(id);
         repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Categoria não encontrada!"));
         return repository.save(input);
     }
