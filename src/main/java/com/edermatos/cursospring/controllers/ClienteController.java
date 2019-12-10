@@ -1,6 +1,6 @@
 package com.edermatos.cursospring.controllers;
 
-import com.edermatos.cursospring.domain.ClienteEntidade;
+import com.edermatos.cursospring.domain.Cliente;
 import com.edermatos.cursospring.interfaces.CrudController;
 import com.edermatos.cursospring.services.ClienteService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController implements CrudController<ClienteEntidade> {
+public class ClienteController implements CrudController<Cliente> {
 
     private final ClienteService service;
 
@@ -19,22 +19,22 @@ public class ClienteController implements CrudController<ClienteEntidade> {
     }
 
     @Override
-    public List<ClienteEntidade> findAll() {
+    public List<Cliente> findAll() {
         return service.findAll();
     }
 
     @Override
-    public ClienteEntidade findOne(int id) {
+    public Cliente findOne(int id) {
         return service.findOne(id);
     }
 
     @Override
-    public ClienteEntidade create(ClienteEntidade input) {
+    public Cliente create(Cliente input) {
         return service.create(input);
     }
 
     @Override
-    public ClienteEntidade update(int id, ClienteEntidade input) {
+    public Cliente update(int id, Cliente input) {
         return service.update(id, input);
     }
 

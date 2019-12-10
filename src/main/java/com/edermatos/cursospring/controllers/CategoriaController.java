@@ -1,6 +1,6 @@
 package com.edermatos.cursospring.controllers;
 
-import com.edermatos.cursospring.domain.CategoriaEntidade;
+import com.edermatos.cursospring.domain.Categoria;
 import com.edermatos.cursospring.interfaces.CrudController;
 import com.edermatos.cursospring.services.CategoriaService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/categorias")
-public class CategoriaController implements CrudController<CategoriaEntidade> {
+public class CategoriaController implements CrudController<Categoria> {
 
     private final CategoriaService service;
 
@@ -19,22 +19,22 @@ public class CategoriaController implements CrudController<CategoriaEntidade> {
     }
 
     @Override
-    public List<CategoriaEntidade> findAll() {
+    public List<Categoria> findAll() {
         return service.findAll();
     }
 
     @Override
-    public CategoriaEntidade findOne(int id) {
+    public Categoria findOne(int id) {
         return service.findOne(id);
     }
 
     @Override
-    public CategoriaEntidade create(CategoriaEntidade input) {
+    public Categoria create(Categoria input) {
         return service.create(input);
     }
 
     @Override
-    public CategoriaEntidade update(int id, CategoriaEntidade input) {
+    public Categoria update(int id, Categoria input) {
         return service.update(id, input);
     }
 

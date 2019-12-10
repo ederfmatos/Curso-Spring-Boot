@@ -43,15 +43,15 @@ public class CursospringApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        CategoriaEntidade cat1 = new CategoriaEntidade(null, "Eletrodomésticos");
-        CategoriaEntidade cat2 = new CategoriaEntidade(null, "Informatica");
-        CategoriaEntidade cat3 = new CategoriaEntidade(null, "Escritório");
+        Categoria cat1 = new Categoria(null, "Eletrodomésticos");
+        Categoria cat2 = new Categoria(null, "Informatica");
+        Categoria cat3 = new Categoria(null, "Escritório");
 
-        ProdutoEntidade p1 = new ProdutoEntidade(null, "Microondas", 359.90);
-        ProdutoEntidade p2 = new ProdutoEntidade(null, "Notebook", 3759.90);
-        ProdutoEntidade p3 = new ProdutoEntidade(null, "Mouse", 29.90);
-        ProdutoEntidade p4 = new ProdutoEntidade(null, "Impressora", 359.90);
-        ProdutoEntidade p5 = new ProdutoEntidade(null, "Liquidificador", 89.80);
+        Produto p1 = new Produto(null, "Microondas", 359.90);
+        Produto p2 = new Produto(null, "Notebook", 3759.90);
+        Produto p3 = new Produto(null, "Mouse", 29.90);
+        Produto p4 = new Produto(null, "Impressora", 359.90);
+        Produto p5 = new Produto(null, "Liquidificador", 89.80);
 
         cat1.getProdutos().addAll(Arrays.asList(p1, p5));
         cat2.getProdutos().addAll(Arrays.asList(p2, p3, p4));
@@ -66,18 +66,18 @@ public class CursospringApplication implements CommandLineRunner {
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
-        EstadoEntidade e1 = new EstadoEntidade(null, "São Paulo", "SP");
-        EstadoEntidade e2 = new EstadoEntidade(null, "Rio de Janeiro", "RJ");
+        Estado e1 = new Estado(null, "São Paulo", "SP");
+        Estado e2 = new Estado(null, "Rio de Janeiro", "RJ");
 
-        CidadeEntidade c1 = new CidadeEntidade(null, "Guariba", e1);
-        CidadeEntidade c2 = new CidadeEntidade(null, "Araraquara", e1);
+        Cidade c1 = new Cidade(null, "Guariba", e1);
+        Cidade c2 = new Cidade(null, "Araraquara", e1);
 
         e1.getCidades().addAll(Arrays.asList(c1, c2));
 
         estadoRepository.saveAll(Arrays.asList(e1, e2));
 
-        ClienteEntidade cli1 = new ClienteEntidade(null, "Eder Matos", "ederfmatos@gmail.com", "12345678910", TipoCliente.PESSOA_FISICA);
-        EnderecoEntidade end1 = new EnderecoEntidade(null, "Josefina Vidoretti de Oliveira", 61, null, "Mario Cazeri", "14840000", cli1, c1);
+        Cliente cli1 = new Cliente(null, "Eder Matos", "ederfmatos@gmail.com", "12345678910", TipoCliente.PESSOA_FISICA);
+        Endereco end1 = new Endereco(null, "Josefina Vidoretti de Oliveira", 61, null, "Mario Cazeri", "14840000", cli1, c1);
         cli1.getEnderecos().add(end1);
         cli1.getTelefones().add("16999644153");
 

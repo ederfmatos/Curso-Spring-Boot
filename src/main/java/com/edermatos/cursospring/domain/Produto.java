@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @ToString(doNotUseGetters = true)
-public class ProdutoEntidade {
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,9 +33,9 @@ public class ProdutoEntidade {
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
-    private List<CategoriaEntidade> categorias = new ArrayList<>();
+    private List<Categoria> categorias = new ArrayList<>();
 
-    public ProdutoEntidade(Integer id, String nome, double preco) {
+    public Produto(Integer id, String nome, double preco) {
         this.setId(id);
         this.setNome(nome);
         this.setPreco(preco);

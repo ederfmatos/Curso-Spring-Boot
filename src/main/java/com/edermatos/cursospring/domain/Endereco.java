@@ -12,7 +12,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnderecoEntidade {
+public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,10 +36,10 @@ public class EnderecoEntidade {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(nullable = false)
-    private ClienteEntidade cliente;
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private CidadeEntidade cidade;
+    private Cidade cidade;
 
 }

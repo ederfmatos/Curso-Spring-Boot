@@ -1,17 +1,15 @@
 package com.edermatos.cursospring.services;
 
-import com.edermatos.cursospring.domain.CidadeEntidade;
-import com.edermatos.cursospring.domain.EstadoEntidade;
+import com.edermatos.cursospring.domain.Cidade;
 import com.edermatos.cursospring.exceptions.ObjectNotFoundException;
 import com.edermatos.cursospring.interfaces.CrudService;
 import com.edermatos.cursospring.repositories.CidadeRepository;
-import com.edermatos.cursospring.repositories.EstadoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CidadeService implements CrudService<CidadeEntidade> {
+public class CidadeService implements CrudService<Cidade> {
 
     private final CidadeRepository repository;
 
@@ -20,22 +18,22 @@ public class CidadeService implements CrudService<CidadeEntidade> {
     }
 
     @Override
-    public List<CidadeEntidade> findAll() {
+    public List<Cidade> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public CidadeEntidade findOne(int id) {
+    public Cidade findOne(int id) {
         return repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Cidade não encontrada!"));
     }
 
     @Override
-    public CidadeEntidade create(CidadeEntidade input) {
+    public Cidade create(Cidade input) {
         return repository.save(input);
     }
 
     @Override
-    public CidadeEntidade update(int id, CidadeEntidade input) {
+    public Cidade update(int id, Cidade input) {
         input.setId(id);
         repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Cidade não encontrada!"));
         return repository.save(input);
@@ -43,7 +41,7 @@ public class CidadeService implements CrudService<CidadeEntidade> {
 
     @Override
     public void remove(int id) {
-        CidadeEntidade entidade = repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Cidade não encontrada!"));
+        Cidade entidade = repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Cidade não encontrada!"));
         repository.delete(entidade);
     }
 

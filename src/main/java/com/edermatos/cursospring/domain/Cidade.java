@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString(doNotUseGetters = true)
-public class CidadeEntidade implements Serializable {
+public class Cidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,6 @@ public class CidadeEntidade implements Serializable {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private EstadoEntidade estado;
+    private Estado estado;
 
 }

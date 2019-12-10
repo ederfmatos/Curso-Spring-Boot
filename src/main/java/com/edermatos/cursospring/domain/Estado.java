@@ -14,7 +14,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @ToString(doNotUseGetters = true)
-public class EstadoEntidade implements Serializable {
+public class Estado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +30,9 @@ public class EstadoEntidade implements Serializable {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
-    private List<CidadeEntidade> cidades = new ArrayList<>();
+    private List<Cidade> cidades = new ArrayList<>();
 
-    public EstadoEntidade(Integer id, String nome, String sigla) {
+    public Estado(Integer id, String nome, String sigla) {
         this.setId(id);
         this.setNome(nome);
         this.setSigla(sigla);

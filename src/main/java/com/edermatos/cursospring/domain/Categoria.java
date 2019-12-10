@@ -13,7 +13,7 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
-public class CategoriaEntidade implements Serializable {
+public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,9 @@ public class CategoriaEntidade implements Serializable {
     private String nome;
 
     @ManyToMany(mappedBy = "categorias")
-    private List<ProdutoEntidade> produtos = new ArrayList<>();
+    private List<Produto> produtos = new ArrayList<>();
 
-    public CategoriaEntidade(Integer id, String nome) {
+    public Categoria(Integer id, String nome) {
         this.setId(id);
         this.setNome(nome);
     }

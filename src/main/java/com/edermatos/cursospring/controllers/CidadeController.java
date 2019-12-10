@@ -1,10 +1,8 @@
 package com.edermatos.cursospring.controllers;
 
-import com.edermatos.cursospring.domain.CidadeEntidade;
-import com.edermatos.cursospring.domain.EstadoEntidade;
+import com.edermatos.cursospring.domain.Cidade;
 import com.edermatos.cursospring.interfaces.CrudController;
 import com.edermatos.cursospring.services.CidadeService;
-import com.edermatos.cursospring.services.EstadoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/cidades")
-public class CidadeController implements CrudController<CidadeEntidade> {
+public class CidadeController implements CrudController<Cidade> {
 
     private final CidadeService service;
 
@@ -21,22 +19,22 @@ public class CidadeController implements CrudController<CidadeEntidade> {
     }
 
     @Override
-    public List<CidadeEntidade> findAll() {
+    public List<Cidade> findAll() {
         return service.findAll();
     }
 
     @Override
-    public CidadeEntidade findOne(int id) {
+    public Cidade findOne(int id) {
         return service.findOne(id);
     }
 
     @Override
-    public CidadeEntidade create(CidadeEntidade input) {
+    public Cidade create(Cidade input) {
         return service.create(input);
     }
 
     @Override
-    public CidadeEntidade update(int id, CidadeEntidade input) {
+    public Cidade update(int id, Cidade input) {
         return service.update(id, input);
     }
 

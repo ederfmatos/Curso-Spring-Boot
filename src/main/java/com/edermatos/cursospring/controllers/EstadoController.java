@@ -1,6 +1,6 @@
 package com.edermatos.cursospring.controllers;
 
-import com.edermatos.cursospring.domain.EstadoEntidade;
+import com.edermatos.cursospring.domain.Estado;
 import com.edermatos.cursospring.interfaces.CrudController;
 import com.edermatos.cursospring.services.EstadoService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/estados")
-public class EstadoController implements CrudController<EstadoEntidade> {
+public class EstadoController implements CrudController<Estado> {
 
     private final EstadoService service;
 
@@ -19,22 +19,22 @@ public class EstadoController implements CrudController<EstadoEntidade> {
     }
 
     @Override
-    public List<EstadoEntidade> findAll() {
+    public List<Estado> findAll() {
         return service.findAll();
     }
 
     @Override
-    public EstadoEntidade findOne(int id) {
+    public Estado findOne(int id) {
         return service.findOne(id);
     }
 
     @Override
-    public EstadoEntidade create(EstadoEntidade input) {
+    public Estado create(Estado input) {
         return service.create(input);
     }
 
     @Override
-    public EstadoEntidade update(int id, EstadoEntidade input) {
+    public Estado update(int id, Estado input) {
         return service.update(id, input);
     }
 

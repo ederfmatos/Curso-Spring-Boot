@@ -15,7 +15,7 @@ import java.util.Set;
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
-public class ClienteEntidade {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class ClienteEntidade {
     private TipoCliente tipo;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<EnderecoEntidade> enderecos = new ArrayList<>();
+    private List<Endereco> enderecos = new ArrayList<>();
 
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
@@ -44,7 +44,7 @@ public class ClienteEntidade {
     @CollectionTable(name = "telefones")
     private Set<String> telefones = new HashSet<>();
 
-    public ClienteEntidade(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
+    public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
         this.setId(id);
         this.setNome(nome);
         this.setEmail(email);
