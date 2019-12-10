@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.HashSet;
 
 @SpringBootApplication
 public class CursospringApplication implements CommandLineRunner {
@@ -36,6 +37,8 @@ public class CursospringApplication implements CommandLineRunner {
     @Autowired
     private PagamentoRepository pagamentoRepository;
 
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(CursospringApplication.class, args);
@@ -83,12 +86,17 @@ public class CursospringApplication implements CommandLineRunner {
 
         clienteRepository.save(cli1);
 
-        Pedido ped1 = new Pedido(null, LocalDate.now(), null, cli1, end1);
+        Pedido ped1 = new Pedido(null, LocalDate.now(), null, cli1, end1, new HashSet<>());
 
         PagamentoComCartao pagto1 = new PagamentoComCartao(null, EstadoPagamento.PENDETE, ped1, 6);
         ped1.setPagamento(pagto1);
 
         pedidoRepository.save(ped1);
         pagamentoRepository.save(pagto1);
+
+        ItemPedido ip1 = new ItemPedido(ped1, p1, 0, 1, 2000);
+        ped1.getItens().add(ip1);
+
+        itemPedidoRepository.save(ip1);
     }
 }

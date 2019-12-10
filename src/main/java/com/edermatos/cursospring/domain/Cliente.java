@@ -4,6 +4,7 @@ import com.edermatos.cursospring.enumerations.TipoCliente;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Set;
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
-public class Cliente {
+public class Cliente  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
