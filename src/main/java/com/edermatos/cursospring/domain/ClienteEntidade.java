@@ -34,7 +34,7 @@ public class ClienteEntidade {
     @Enumerated(value = EnumType.STRING)
     private TipoCliente tipo;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<EnderecoEntidade> enderecos = new ArrayList<>();
 
     @ElementCollection

@@ -1,9 +1,8 @@
 package com.edermatos.cursospring;
 
-import com.edermatos.cursospring.domain.CategoriaEntidade;
-import com.edermatos.cursospring.domain.ProdutoEntidade;
-import com.edermatos.cursospring.repositories.CategoriaRepository;
-import com.edermatos.cursospring.repositories.ProdutoRepository;
+import com.edermatos.cursospring.domain.*;
+import com.edermatos.cursospring.enumerations.TipoCliente;
+import com.edermatos.cursospring.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +18,15 @@ public class CursospringApplication implements CommandLineRunner {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private EstadoRepository estadoRepository;
+
+    @Autowired
+    private CidadeRepository cidadeRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(CursospringApplication.class, args);
@@ -48,5 +56,21 @@ public class CursospringApplication implements CommandLineRunner {
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+        EstadoEntidade e1 = new EstadoEntidade(null, "São Paulo", "SP");
+        EstadoEntidade e2 = new EstadoEntidade(null, "Rio de Janeiro", "RJ");
+
+        CidadeEntidade c1 = new CidadeEntidade(null, "Guariba", e1);
+        CidadeEntidade c2 = new CidadeEntidade(null, "Araraquara", e1);
+
+        e1.getCidades().addAll(Arrays.asList(c1, c2));
+
+        estadoRepository.saveAll(Arrays.asList(e1, e2));
+
+        ClienteEntidade cli1 = new ClienteEntidade(null, "Eder Matos", "ederfmatos@gmail.com", "12345678910", TipoCliente.PESSOA_FISICA);
+        cli1.getEnderecos().add(new EnderecoEntidade(null, "Josefina Vidoretti de Oliveira", 61, null, "Mario Cazeri", "14840000", cli1, c1));
+        cli1.getTelefones().add("16999644153");
+
+        clienteRepository.save(cli1);
     }
 }

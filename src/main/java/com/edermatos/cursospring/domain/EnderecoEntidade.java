@@ -1,5 +1,6 @@
 package com.edermatos.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,7 @@ public class EnderecoEntidade {
     @Column(nullable = false)
     private String cep;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(nullable = false)
     private ClienteEntidade cliente;

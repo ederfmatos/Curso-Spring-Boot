@@ -24,14 +24,18 @@ public class EstadoEntidade implements Serializable {
     @Column(nullable = false)
     private String nome;
 
+    @Column(nullable = false, length = 2, unique = true)
+    private String sigla;
+
     @JsonIgnore
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private List<CidadeEntidade> cidades = new ArrayList<>();
 
-    public EstadoEntidade(Integer id, String nome) {
+    public EstadoEntidade(Integer id, String nome, String sigla) {
         this.setId(id);
         this.setNome(nome);
+        this.setSigla(sigla);
     }
 
 }
