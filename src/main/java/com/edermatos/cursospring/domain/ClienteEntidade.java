@@ -37,6 +37,9 @@ public class ClienteEntidade {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<EnderecoEntidade> enderecos = new ArrayList<>();
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     @ElementCollection
     @CollectionTable(name = "telefones")
     private Set<String> telefones = new HashSet<>();

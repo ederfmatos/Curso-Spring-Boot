@@ -1,6 +1,7 @@
 package com.edermatos.cursospring;
 
 import com.edermatos.cursospring.domain.*;
+import com.edermatos.cursospring.enumerations.EstadoPagamento;
 import com.edermatos.cursospring.enumerations.TipoCliente;
 import com.edermatos.cursospring.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -27,6 +29,13 @@ public class CursospringApplication implements CommandLineRunner {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private PedidoRepository pedidoRepository;
+
+    @Autowired
+    private PagamentoRepository pagamentoRepository;
+
 
     public static void main(String[] args) {
         SpringApplication.run(CursospringApplication.class, args);
@@ -68,9 +77,18 @@ public class CursospringApplication implements CommandLineRunner {
         estadoRepository.saveAll(Arrays.asList(e1, e2));
 
         ClienteEntidade cli1 = new ClienteEntidade(null, "Eder Matos", "ederfmatos@gmail.com", "12345678910", TipoCliente.PESSOA_FISICA);
-        cli1.getEnderecos().add(new EnderecoEntidade(null, "Josefina Vidoretti de Oliveira", 61, null, "Mario Cazeri", "14840000", cli1, c1));
+        EnderecoEntidade end1 = new EnderecoEntidade(null, "Josefina Vidoretti de Oliveira", 61, null, "Mario Cazeri", "14840000", cli1, c1);
+        cli1.getEnderecos().add(end1);
         cli1.getTelefones().add("16999644153");
 
         clienteRepository.save(cli1);
+
+        Pedido ped1 = new Pedido(null, LocalDate.now(), null, cli1, end1);
+
+        PagamentoComCartao pagto1 = new PagamentoComCartao(null, EstadoPagamento.PENDETE, ped1, 6);
+        ped1.setPagamento(pagto1);
+
+        pedidoRepository.save(ped1);
+        pagamentoRepository.save(pagto1);
     }
 }
