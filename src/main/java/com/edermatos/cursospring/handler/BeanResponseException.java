@@ -1,5 +1,6 @@
 package com.edermatos.cursospring.handler;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import java.util.Date;
 @ToString(doNotUseGetters = true)
 public class BeanResponseException {
 
+    @JsonFormat(pattern = "dd/MM/yyyy - HH:mm:ss")
     private Date timestamp;
     private String message;
     private String details;

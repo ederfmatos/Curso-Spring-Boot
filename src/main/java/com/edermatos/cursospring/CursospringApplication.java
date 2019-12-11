@@ -9,9 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 @SpringBootApplication
@@ -25,9 +25,6 @@ public class CursospringApplication implements CommandLineRunner {
 
     @Autowired
     private EstadoRepository estadoRepository;
-
-    @Autowired
-    private CidadeRepository cidadeRepository;
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -46,7 +43,7 @@ public class CursospringApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         Categoria cat1 = new Categoria(null, "Eletrodomésticos");
         Categoria cat2 = new Categoria(null, "Informatica");
         Categoria cat3 = new Categoria(null, "Escritório");
@@ -62,10 +59,10 @@ public class CursospringApplication implements CommandLineRunner {
         cat3.getProdutos().addAll(Arrays.asList(p1, p4));
 
         p1.getCategorias().addAll(Arrays.asList(cat1, cat3));
-        p2.getCategorias().addAll(Arrays.asList(cat2));
-        p3.getCategorias().addAll(Arrays.asList(cat2));
+        p2.getCategorias().addAll(Collections.singletonList(cat2));
+        p3.getCategorias().addAll(Collections.singletonList(cat2));
         p4.getCategorias().addAll(Arrays.asList(cat2, cat3));
-        p5.getCategorias().addAll(Arrays.asList(cat1));
+        p5.getCategorias().addAll(Collections.singletonList(cat1));
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
