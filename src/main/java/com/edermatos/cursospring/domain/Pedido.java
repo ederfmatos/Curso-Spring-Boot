@@ -1,10 +1,12 @@
 package com.edermatos.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +22,8 @@ public class Pedido  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private LocalDate instante;
+    @JsonFormat(pattern = "dd/MM/yyyy - HH:mm:ss")
+    private LocalDateTime instante;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     @JoinColumn

@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -86,7 +87,7 @@ public class CursospringApplication implements CommandLineRunner {
 
         clienteRepository.save(cli1);
 
-        Pedido ped1 = new Pedido(null, LocalDate.now(), null, cli1, end1, new HashSet<>());
+        Pedido ped1 = new Pedido(null, LocalDateTime.now(), null, cli1, end1, new HashSet<>());
 
         PagamentoComCartao pagto1 = new PagamentoComCartao(null, EstadoPagamento.PENDETE, ped1, 6);
         ped1.setPagamento(pagto1);
