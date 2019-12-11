@@ -1,5 +1,6 @@
 package com.edermatos.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @Entity
 public class ItemPedido implements Serializable {
 
+    @JsonIgnore
     @EmbeddedId
     private ItemPedidoPK id = new ItemPedidoPK();
 
@@ -33,6 +35,10 @@ public class ItemPedido implements Serializable {
         this.setDesconto(desconto);
         this.setQuantidade(quantidade);
         this.setPreco(preco);
+    }
+
+    public Produto getProduto() {
+        return getId().getProduto();
     }
 
 }

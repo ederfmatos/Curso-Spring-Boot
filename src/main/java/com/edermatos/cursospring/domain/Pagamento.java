@@ -1,6 +1,7 @@
 package com.edermatos.cursospring.domain;
 
 import com.edermatos.cursospring.enumerations.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public abstract class Pagamento implements Serializable {
 
     private EstadoPagamento estado = EstadoPagamento.PENDETE;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
